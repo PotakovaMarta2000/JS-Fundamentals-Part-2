@@ -10,9 +10,9 @@
 // Простейшее условие
 
 if (2*4 == 8) {
-    console.log('Верно!')
+    console.log('Верно!');
 } else {
-    console.log('Неверно!')
+    console.log('Неверно!');
 }
 
 // Условие должно преобразовываться в логический тип данных: true, false
@@ -28,20 +28,20 @@ if (2*4 == 8) {
 let num = 50;
 
 if (num <49) {
-    console.log('Неверно!')
+    console.log('Неверно!');
 } else if (num >100) {
-    console.log('Много!')
+    console.log('Много!');
 } else {
-    console.log('Верно')
-};
+    console.log('Верно');
+}
 
 //Пример
-let phrase = prompt('Скажи слово друг и заходи')
+let phrase = prompt('Скажи слово друг и заходи');
 
 if (phrase === 'Друг') {
-    alert('Привет')
+    alert('Привет');
 } else {
-    alert('Я тебя не знаю')
+    alert('Я тебя не знаю');
 }
 
 //Способ №2
@@ -163,11 +163,11 @@ console.log(anotherNum);
 //Function Expression Когда мы функцию присваиваем в переменную
 //Эта функция создается только тогда, когда код до нее доходит.Мы не можем вызвать ее заранее, 
 //как мы это делали при Function Declaration
-// let calc = function(a,b) {
-//     return (a+b);
-// }
-// console.log(calc(3,4));
-// console.log(calc(8,4));
+let calc = function(a,b) {
+    return (a+b);
+}
+console.log(calc(3,4));
+console.log(calc(8,4));
 
 // ES6 Стрелочная функция
 let calc = (a,b) => a+b;
@@ -185,8 +185,47 @@ console.log(str.toUpperCase()); //Метод
 console.log(str.toLowerCase()); //Метод
 
 //Number
-// let twelve = '12.2';
+let twelve = '12.2';
 let twelve = '12.2px';
 // console.log(Math.round(twelve));
 console.log(parseInt(twelve));
 console.log(parseFloat(twelve));
+
+//Callback-функции
+function first() {
+    //что-то делаем, спец структура, кот делает задержку на полсекунды
+    setTimeout(function() {
+        console.log(1);
+    }, 500);
+}
+
+function second() {
+    console.log(2);
+}
+first();
+second();
+
+//Callback-функции-это функция кот должна быть выполнена только после того,как др функция завершила свое вып-е
+//т.е.если мы хотим, чтобы 2я функция вып-сь только после 1ой-то мы ее должны задать как Callback-функцию
+//в кач-ве аргумента, любая функция может взять др функцию и она уже будет называться Callback functions
+function learnJS(lang, callback) {
+    console.log('Я учу' + lang);
+    callback();
+}
+learnJS('JavaScript', function() {
+    console.log('Я прошел несколько уроков по основам!');
+})
+
+//Callback-функцию можно создать и вне вызова функции и просто передавать туда готовые результаты
+function learnJS(lang, callback) {
+    console.log('Я учу' + lang);
+    callback();
+    }
+
+    function done() {
+        console.log('Я прошел несколько уроков по основам!');
+    }
+    learnJS('JavaScript', done);
+    
+    // В общем Callbackи позволяют нам быть уверенными в том, что опред код не начнет исполнение до того
+    // момента, пока др код не завершит свое исполнение
